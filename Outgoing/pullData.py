@@ -11,17 +11,8 @@ def saveFile(fileName,Path,dataArr):
 	'''
 	save the data to some format.
 	'''
-	import csv
+	import csv	
 	
-	#with open("%s%s.csv"%(Path,fileName),"w") as f:	
-	#	f.write(",".join(dataArr[0].keys()) + "\n")
-	#	for i in range(len(dataArr)):    		
-	#		for row in zip(dataArr[i].values()):
-	#			f.write(",".join(str(n) for n in row))
-	#			f.write("\n")
-	#f.close()
-    
-	#get Params from the dictionary
 	f = open('%s%s.csv'%(Path,fileName),'wb')
 	w = csv.DictWriter(f,dataArr[0].keys())
 	w.writeheader()
@@ -38,13 +29,13 @@ def getJSON(tableName,parmType,start,end,proxy=False):
 	
 	url = "http://www.dbnfews.com/incoming/testing/sendToFEWS/getFromSQL.php?table=%s&type=%s&start=%s&end=%s"%(tableName,parmType,start,end)
 	#print(url)
-	#if proxy:
-	#	PROXY = {'http': 'http://justin.pringle:!Backl1ne0117@proxy.durban.gov.za:80',
-	#			'https': 'https://justin.pringle:!Backl1ne0117@proxy.durban.gov.za:80'}
-	#	pProxy = urllib2.ProxyHandler(PROXY)
-	#	auth = urllib2.HTTPBasicAuthHandler()
-	#	opener = urllib2.build_opener(pProxy, auth, urllib2.HTTPHandler)
-	#	urllib2.install_opener(opener)
+	if proxy:
+		PROXY = {'http': 'http://user.name:password@proxy.address:port',
+				'https': 'https://user.name:password@proxy.address:port'}
+		pProxy = urllib2.ProxyHandler(PROXY)
+		auth = urllib2.HTTPBasicAuthHandler()
+		opener = urllib2.build_opener(pProxy, auth, urllib2.HTTPHandler)
+		urllib2.install_opener(opener)
 	
 	
 	req = urllib2.Request(url,headers={'User-Agent' : "Magic Browser"})
@@ -114,13 +105,7 @@ if __name__=="__main__":
 				
 	
 	
-	#print(start,check0,end,check1)
 	
-	
-	#print(dataDict[0].keys())
-	#
-	#print(dataDict[0:5])
-	#print(dataDict[0]["date"])
 	
 	
 	
