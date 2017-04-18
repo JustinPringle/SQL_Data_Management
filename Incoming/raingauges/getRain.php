@@ -58,7 +58,7 @@ function get_Data($sid,$start,$end){
 
 //include sql talk class
 
-include_once('/home/dbnfeept/SQL_Conns/sqlTalk.class.php');
+include_once('/path/to/sql/class/file');
 
 $sql = new dbnfewsSQL('raingauges','raingauge_data');
 
