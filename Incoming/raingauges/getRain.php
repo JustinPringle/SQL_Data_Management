@@ -60,7 +60,7 @@ function get_Data($sid,$start,$end){
 
 include_once('/path/to/sql/class/file');
 
-$sql = new dbnfewsSQL('raingauges','raingauge_data');
+$sql = new dbnfewsSQL('relationship_Table','data_Table'); //replace these names
 
 $allNames = $sql->getNames();
 
@@ -78,7 +78,7 @@ for ($i=0;$i<sizeof($allNames);$i++){
     $data = get_Data(mb_strtolower($name),$start,$end);
     
     if (sizeof($data[0])>0){
-        $sql->insertSQL($data[0],$nameID,"raingauge_id",$data[1]);
+        $sql->insertSQL($data[0],$nameID,"id/column/name",$data[1]); //column name that holds the id of the gauge
     } else{
         continue;
     }
